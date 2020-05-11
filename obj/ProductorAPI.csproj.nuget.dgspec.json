@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\CS7\\Sistemas Operativos\\Proyect\\ProductorAPI\\ProductorAPI.csproj": {}
+    "C:\\Users\\joseg\\OneDrive - Universidad Francisco Marroquin\\CS7\\Sistemas Operativos\\apitests\\ProductorAPI\\ProductorAPI.csproj": {}
   },
   "projects": {
-    "D:\\CS7\\Sistemas Operativos\\Proyect\\ProductorAPI\\ProductorAPI.csproj": {
+    "C:\\Users\\joseg\\OneDrive - Universidad Francisco Marroquin\\CS7\\Sistemas Operativos\\apitests\\ProductorAPI\\ProductorAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\CS7\\Sistemas Operativos\\Proyect\\ProductorAPI\\ProductorAPI.csproj",
+        "projectUniqueName": "C:\\Users\\joseg\\OneDrive - Universidad Francisco Marroquin\\CS7\\Sistemas Operativos\\apitests\\ProductorAPI\\ProductorAPI.csproj",
         "projectName": "ProductorAPI",
-        "projectPath": "D:\\CS7\\Sistemas Operativos\\Proyect\\ProductorAPI\\ProductorAPI.csproj",
+        "projectPath": "C:\\Users\\joseg\\OneDrive - Universidad Francisco Marroquin\\CS7\\Sistemas Operativos\\apitests\\ProductorAPI\\ProductorAPI.csproj",
         "packagesPath": "C:\\Users\\joseg\\.nuget\\packages\\",
-        "outputPath": "D:\\CS7\\Sistemas Operativos\\Proyect\\ProductorAPI\\obj\\",
+        "outputPath": "C:\\Users\\joseg\\OneDrive - Universidad Francisco Marroquin\\CS7\\Sistemas Operativos\\apitests\\ProductorAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\joseg\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -37,6 +37,16 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.AspNet.WebApi.Client": {
+              "target": "Package",
+              "version": "[5.2.7, )"
+            },
+            "RabbitMQ.Client": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -55,7 +65,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
