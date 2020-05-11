@@ -1,22 +1,12 @@
 using System;
-//using RabbitMQ.Client;
 using System.Text;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Security.Policy;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using ProductorAPI.Models;
-using RabbitMQ.Client.Events;
-using System.Reflection;
-using System.Security.Cryptography;
-using Microsoft.Extensions.ObjectPool;
-using Microsoft.Extensions.Options;
 using Newtonsoft.Json.Linq;
 
 namespace ProductorAPI
@@ -36,16 +26,9 @@ namespace ProductorAPI
         public static int operaciones;
         public static List<List<string>> limites;
 
-        public static string url = "https://sistemas-operativos-ufm.firebaseio.com/";
-        public static string url_cola = "https://listener2020.herokuapp.com/";
+        public static string url = "url firebase";
+        public static string url_cola = "url heroku";
         public static HttpClient cliente = HttpClientFactory.Create();
-        /*public static ConnectionFactory factory = new ConnectionFactory()
-        {
-            UserName = "jfdrdxpr",
-            Password = "I9KoAC_Nx1EO_yaVGJ0O79plDcFb-X75",
-            HostName = "mosquito.rmq.cloudamqp.com",
-            VirtualHost = "jfdrdxpr"
-        };*/
 
         public static void Main(string[] args)
         {
@@ -151,15 +134,15 @@ namespace ProductorAPI
                         {
                             repetir = false;
                             Console.WriteLine("insertado.");
+                            uso_contador.WaitOne();
+                            operaciones += 1;
+                            uso_contador.Release();
                             threads_information[name].work += 1;
                             log.Add("trabajo " + fecha() + " Thread " + producer_threads[name].ManagedThreadId + " inserted its " + threads_information[name].work + "th item.");
                         }
                         else
                         {
                             Console.WriteLine("error en la cola.");
-                            uso_contador.WaitOne();
-                            operaciones -= 1;
-                            uso_contador.Release();
                             log.Add("error " + fecha() + " Thread " + producer_threads[name].ManagedThreadId + " could not insert in queue.");
                         }
                        
@@ -212,32 +195,6 @@ namespace ProductorAPI
                 return;
             }
         }
-
-        /*
-        public static List<string> get_elements(int id) {
-            var connection = factory.CreateConnection();
-            var channel = connection.CreateModel();
-            List<string> resultados = new List<string>();
-
-            channel.QueueDeclare(queue: id.ToString(),
-                                 durable: false,
-                                 exclusive: false,
-                                 autoDelete: false,
-                                 arguments: null);
-
-            var consumer = new EventingBasicConsumer(channel);
-            consumer.Received += (model, ea) =>
-            {
-                var body = ea.Body;
-                var message = Encoding.UTF8.GetString(body.ToArray());
-                Console.WriteLine("hola");
-                resultados.Add(message);
-            };
-            channel.BasicConsume(queue: id.ToString(),false,consumer);
-
-            Thread.Sleep(10000);
-            return resultados;
-        }*/
     }
 
     public class Abecedario {
@@ -267,3 +224,4 @@ namespace ProductorAPI
 
     }
 }
+   
